@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_ashiphsayyad32_Airline_App_Java_1732696592138-pr-trigger-input-set
+  identifier: Build_ashiphsayyad32_Airline_App_Java_1732696592138prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_ashiphsayyad32_Airline_App_Java_1732696592138
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
