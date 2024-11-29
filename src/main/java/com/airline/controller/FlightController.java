@@ -1,13 +1,17 @@
 package com.airline.controller;
 
 import com.airline.model.Flight;
+import com.airline.model.FlightWithIP;
 import com.airline.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/flight")
@@ -25,11 +29,24 @@ public class FlightController {
     }
 
     //To Get all flights
+//    @GetMapping("/")
+//    public ResponseEntity<List<Flight>> getAllFlight(){
+//        List<Flight> allFlight = flightService.getAllFlight();
+//        return new ResponseEntity<>(allFlight,HttpStatus.OK);
+//    }
+
     @GetMapping("/")
-    public ResponseEntity<List<Flight>> getAllFlight(){
-        List<Flight> allFlight = flightService.getAllFlight();
-        return new ResponseEntity<>(allFlight,HttpStatus.OK);
+    public ResponseEntity<List<FlightWithIP>> getAllFlight() throws UnknownHostException {
+        List<Flight> allFlights = flightService.getAllFlight();
+        String serverIP = InetAddress.getLocalHost().getHostAddress();
+
+        List<FlightWithIP> flightsWithIP = allFlights.stream()
+                .map(flight -> new FlightWithIP(flight, serverIP))
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(flightsWithIP, HttpStatus.OK);
     }
+
 
     //To Get flight
     @GetMapping("/{flightId}")
