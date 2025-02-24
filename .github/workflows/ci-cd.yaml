@@ -52,7 +52,7 @@ jobs:
         with:
           token_format: 'access_token'
           workload_identity_provider: ${{ secrets.WIF_PROVIDER }} # GitHub secret for WIF provider
-          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }} # GitHub secret for WIF service account
+          service_account: ${{ secrets.SERVICE_ACCOUNT }} # GitHub secret for WIF service account
 
       - name: Configure Docker authentication
         run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
