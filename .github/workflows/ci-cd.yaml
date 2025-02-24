@@ -6,11 +6,11 @@ on:
       - main  # Trigger on pushes to the main branch
 
 env:
-  PROJECT_ID: 'your-gcp-project-id' # Update to your Google Cloud project ID
-  REGION: 'your-gcp-region' # Update to your GCP region (e.g., us-central1)
-  GKE_CLUSTER_NAME: 'your-gke-cluster-name' # Update to your GKE cluster name
-  GKE_CLUSTER_REGION: 'your-gke-cluster-region' # Update to your GKE cluster region (or zone if zonal)
-  REPOSITORY: 'backend-image-repo' # Update to your Artifact Registry repository name
+  # PROJECT_ID: 'your-gcp-project-id' # Update to your Google Cloud project ID
+  # REGION: 'your-gcp-region' # Update to your GCP region (e.g., us-central1)
+  # GKE_CLUSTER_NAME: 'your-gke-cluster-name' # Update to your GKE cluster name
+  # GKE_CLUSTER_REGION: 'your-gke-cluster-region' # Update to your GKE cluster region (or zone if zonal)
+  # REPOSITORY: 'backend-image-repo' # Update to your Artifact Registry repository name
   BACKEND_DOCKER_IMAGE_NAME: 'backend-app' # Update to your desired backend image name
 
 permissions:
