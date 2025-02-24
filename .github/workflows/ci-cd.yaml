@@ -34,14 +34,14 @@ jobs:
       - name: Run unit tests
         run: mvn test
 
-      - name: Get code-coverage report
-        run: mvn jacoco:report
+      # - name: Get code-coverage report
+      #   run: mvn jacoco:report
 
-      - name: Code Coverage Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: Code Coverage Reports
-          path: target/site/jacoco/index.html
+      # - name: Code Coverage Report
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: Code Coverage Reports
+      #     path: target/site/jacoco/index.html
 
       - name: Build project and package jar
         run: mvn package
