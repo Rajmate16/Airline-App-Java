@@ -46,13 +46,26 @@ jobs:
       - name: Build project and package jar
         run: mvn package
 
+
       - name: Authenticate to Google Cloud using OIDC
         id: google-auth
         uses: google-github-actions/auth@v2
         with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+          project_id: ${{ env.PROJECT_ID }} # Assuming you have PROJECT_ID env var defined in your workflow
           token_format: 'access_token'
-          workload_identity_provider: ${{ secrets.WIF_PROVIDER }} # GitHub secret for WIF provider
-          service_account: ${{ secrets.SERVICE_ACCOUNT }} # GitHub secret for WIF service account
+          access_token_scopes: 'https://www.googleapis.com/auth/cloud-platform' # Request full cloud-platform scope
+          debug: true  
+
+
+      # - name: Authenticate to Google Cloud using OIDC
+      #   id: google-auth
+      #   uses: google-github-actions/auth@v2
+      #   with:
+      #     token_format: 'access_token'
+      #     workload_identity_provider: ${{ secrets.WIF_PROVIDER }} # GitHub secret for WIF provider
+      #     service_account: ${{ secrets.SERVICE_ACCOUNT }} # GitHub secret for WIF service account
 
       - name: Configure Docker authentication
         run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
