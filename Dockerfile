@@ -42,13 +42,6 @@ CMD ["java", "-jar", "/app/airline-app.jar"]
 # # Set the working directory inside the container
 # WORKDIR /app
 #
-# # Copy the JAR file of the Spring Boot application from the builder image into the container
-# COPY --from=builder /build/target/airline-app.jar /app/airline-app.jar
-#
-# # Expose the port that the Spring Boot application will run on
-# EXPOSE 9000
-#
-# # Define the command to run the Spring Boot application when the container starts
-#CMD ["java", "-jar", "airline-app.jar"]
+
 
 #####################################################################################################
